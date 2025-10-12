@@ -24,7 +24,7 @@ data_frame_2 = data_frame[filtro_colunas].copy()
 
 # === APLICANDO FILTRO DE PERFIL ===
 data_frame_2['Perfil 2025'] = data_frame_2['Perfil 2025'].str.strip().str.lower()
-perfil_desejado = 'analista/desenvolvedor - .net'
+perfil_desejado = 'analista/desenvolvedor - alta plataforma'
 data_frame_filtrado_final = data_frame_2[data_frame_2['Perfil 2025'] == perfil_desejado]
 
 # # === SALVANDO PLANILHA FILTRADA ===
