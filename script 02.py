@@ -13,19 +13,19 @@ import re
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
 # === LENDO A BASE DE DADOS ===
-data_frame = pd.read_excel(os.path.join(base_dir, 'BASE 1412.xlsx'))
+data_frame = pd.read_excel(os.path.join(base_dir, 'BASE 2025.xlsx'))
 
 # === FILTRANDO COLUNAS NECESSÁRIAS ===
 filtro_colunas = ['Nome', 'Data de nascimento', 'CPF', 'RG', 'Orgão expedidor',
                   'Data de expedição', 'PIS/NIS', 'E-mail Corporativo', 'Telefone',
-                  'Sigla', 'Perfil 1412/2025']
+                  'Sigla', 'Perfil 2025']
 
 data_frame_2 = data_frame[filtro_colunas].copy()
 
 # === APLICANDO FILTRO DE PERFIL ===
-data_frame_2['Perfil 1412/2025'] = data_frame_2['Perfil 1412/2025'].str.strip().str.lower()
+data_frame_2['Perfil 2025'] = data_frame_2['Perfil 2025'].str.strip().str.lower()
 perfil_desejado = 'analista/desenvolvedor - .net'
-data_frame_filtrado_final = data_frame_2[data_frame_2['Perfil 1412/2025'] == perfil_desejado]
+data_frame_filtrado_final = data_frame_2[data_frame_2['Perfil 2025'] == perfil_desejado]
 
 # # === SALVANDO PLANILHA FILTRADA ===
 nome_arquivo_saida = 'CARGOS_FILTRADOS.xlsx'
@@ -66,16 +66,16 @@ for idx, dados in df.iterrows():
 
        # === Abrir modelo e substituir dados ===
         doc = Document(modelo_path)
-        substituir_texto(doc, "RICARDO CARBONESI", colaborador)
-        substituir_texto(doc, "124.122.068-99", dados["CPF"])
-        substituir_texto(doc, "155892186", dados["RG"])
+        substituir_texto(doc, "COLABORADOR", colaborador)
+        substituir_texto(doc, "000-000-00", dados["CPF"])
+        substituir_texto(doc, "000000000", dados["RG"])
         substituir_texto(doc, "SSP SP", dados["Orgão expedidor"])
         substituir_texto(doc, "ANALISTA DEV POWER BUILDER", perfil_desejado.upper())
         substituir_texto(doc, "121.44236.62.5", dados["PIS/NIS"])
-        substituir_texto(doc, "16 / 03 / 1967", str(dados["Data de nascimento"]))
+        substituir_texto(doc, "16/ 03/ 1967", str(dados["Data de nascimento"]))
         substituir_texto(doc, "fulano@gmail.com", dados["E-mail Corporativo"])
         substituir_texto(doc, "000-000-00", dados["Telefone"])
-        substituir_texto(doc, "SIEMP", dados["Sigla"])
+        substituir_texto(doc, "ABC", dados["Sigla"])
 
        # === Salvar DOCX personalizado ===
         novo_docx = os.path.join(pasta_colab, f"{colaborador_limpo}_FICUS.docx")
