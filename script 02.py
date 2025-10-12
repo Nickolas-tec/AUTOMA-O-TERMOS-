@@ -53,6 +53,19 @@ def limpar_nome(nome):
 df = pd.read_excel(os.path.join(base_dir, nome_arquivo_saida))
 modelo_path = os.path.join(base_dir, "FICUS.docx")
 
+
+# CRIANDO DIRETÓRIO RAIZ POR PERFIL #
+
+nome_diretorio_perfil = limpar_nome(perfil_desejado.title().replace("/", "-"))
+
+# CRIANDO O CAMINHO ABSOLUTO 
+
+dir_raiz_perfil = os.path.join(base_dir, nome_diretorio_perfil)
+
+# CRIANDO O DIRETÓRIO RAIZ PAR AO PERFIL CASO NÃO EXISTA
+
+os.makedirs(dir_raiz_perfil, exist_ok=True)
+
 # === LOOP PARA CADA COLABORADOR ===
 for idx, dados in df.iterrows():
     try:
