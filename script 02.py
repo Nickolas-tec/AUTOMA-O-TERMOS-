@@ -85,7 +85,7 @@ for idx, dados in df.iterrows():
         substituir_texto(doc, "SSP SP", dados["Orgão expedidor"])
         substituir_texto(doc, "ANALISTA DEV POWER BUILDER", perfil_desejado.upper())
         substituir_texto(doc, "121.44236.62.5", dados["PIS/NIS"])
-        substituir_texto(doc, "16/03/1967", str(dados["Data de nascimento"].strftime('%d/%m/%Y')))
+        substituir_texto(doc, "00/00/0000", str(dados["Data de nascimento"].strftime('%d/%m/%Y')))
         substituir_texto(doc, "fulano@gmail.com", dados["E-mail Corporativo"])
         substituir_texto(doc, "000-000-00", dados["Telefone"])
         substituir_texto(doc, "ABC", dados["Sigla"])
