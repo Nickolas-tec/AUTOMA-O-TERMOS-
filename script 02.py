@@ -6,7 +6,7 @@ import numpy as np
 import os
 from docx import Document
 from docx2pdf import convert
-from PyPDF2 import PdfReader, PdfWriter
+# from PyPDF2 import PdfReader, PdfWriter
 import re
 
 # === Caminho base do script ===
@@ -24,7 +24,7 @@ data_frame_2 = data_frame[filtro_colunas].copy()
 
 # === APLICANDO FILTRO DE PERFIL ===
 data_frame_2['Perfil 2025'] = data_frame_2['Perfil 2025'].str.strip().str.lower()
-perfil_desejado = 'especialista em tecnologias / negócios'
+perfil_desejado = 'analista/desenvolvedor - alta plataforma'
 data_frame_filtrado_final = data_frame_2[data_frame_2['Perfil 2025'] == perfil_desejado]
 
 # # === SALVANDO PLANILHA FILTRADA ===
@@ -74,7 +74,7 @@ for idx, dados in df.iterrows():
         print(f"📄 Gerando documento para: {colaborador}")
 
         # === Criar pasta do colaborador ===
-        pasta_colab = os.path.join(base_dir, colaborador_limpo)
+        pasta_colab = os.path.join(dir_raiz_perfil, colaborador_limpo)
         os.makedirs(pasta_colab, exist_ok=True)
 
        # === Abrir modelo e substituir dados ===
